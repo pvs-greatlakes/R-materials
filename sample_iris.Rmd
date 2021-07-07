@@ -1,0 +1,85 @@
+---
+title: "Sample_iris"
+author: "PVS"
+date: "August 22, 2016"
+output: html_document
+---
+**Markdown** is a tool used to create formatted documents. *R Markdown* is an extension of Markdown. R Markdown adds a few features which include R code and results in the formatted document. 
+This allows you to write documents which integrate results from your analysis. Incorporating R results directly into your documents is an important step in reproducible research. Any changes that occur in either your data set or the analysis are automatically updated in your document the next time the document is created.
+
+RStudio creates a document, this is called **knitting** from an .Rmd file in two steps. In the first step, the R commands are run. The results of the R commands are incorporated with the text and Markdown commands from the .Rmd file. The results of the first step is .md file. The second step uses the Markdown formatting commands to format the final document. These steps are done together for you by simply pushing the knit button in RStudio.
+
+We shall do a small exercise. We first load the *iris* data, which contains 50 samples of three types of iris flowers, measured along with four variables.
+
+# Data exploration using *iris* data
+
+Get the variable names or column names.
+
+```{r}
+data(iris) # Load iris data
+names(iris)
+
+```
+
+Get the structure of the dataset 
+
+``` {r}
+str(iris) # Get the structure of data
+
+```
+
+Get the **Attributes** of the dataset.
+
+``` {r}
+attributes(iris)
+
+```
+
+Get the first six rows
+
+```{r, echo=FALSE}
+head(iris)
+
+```
+
+Get the Sepal width of the first six rows
+
+``` {r}
+iris$Sepal.Width[1:6]
+
+```
+
+See the disribution of every variable
+``` {r}
+summary(iris)
+
+```
+
+Also use describe function to see the distribution
+``` {r}
+# Check if the package psych is already installed
+if ("psych" %in% rownames(installed.packages()) == FALSE)
+{ install.packages("psych")}
+library(psych)
+describe(iris)
+
+```
+
+Find the frequency distribution 
+``` {r}
+table(iris$Species)
+```
+
+Draw a histogram of variable **Sepal length**.
+
+``` {r, echo = FALSE}
+hist(iris$Sepal.Length)
+```
+
+Draw a pair plot for the dataset **iris**
+
+```   {r, echo = FALSE}
+plot(iris) # or pairs(iris)
+```
+
+**End of File**
