@@ -1,0 +1,51 @@
+---
+title: "Generate Sample using R"
+author: "PVS"
+date: "23 February 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Generate Sample using R
+
+#### Let us assume we want to generate 1000 observations for the following data set, customer_data:
+#### 1) CustomerId: ranging from 10000 to 20000
+#### 2) Age: ranging from 20 to 90
+#### 3) Pincode: Valid pin code from the pincode_df data frame column pincode
+#### 4) Gender: Male or Female
+#### 5) AnnualIncome: ranging from 100000 to 800000
+
+``` {r}
+pincode_df <- read.csv("D:/GL/Capstone/Chennai/Random_Sample_creation/data/All_India_pincode_data_18082017.csv",header=T)
+dim(pincode_df)
+names(pincode_df)
+
+### Form vectors to facilitate random selection
+
+gender          <- c("M","F")
+Chennai_pincode <- pincode_df[pincode_df$regionname == 'Chennai Region','pincode']
+
+length(Chennai_pincode)
+
+### 
+
+customer_data <- data.frame( CustomerId  = sample(10000:20000,1000),
+                             Age          = sample(20:90,1000,T),            ## replacement is True
+                             Pincode      = sample(Chennai_pincode,1000,T),  ## replacement is True
+                             Gender       = sample(gender,1000,T),        ## replacement is True    
+                             AnnualIncome = sample(100000:800000,1000,T)
+)
+dim(customer_data)
+str(customer_data)
+head(customer_data)
+
+### Write to a csv file named sample_data.csv
+
+write.csv(customer_data, file = "sample_data.csv",row.names = FALSE)
+
+cat("\n\n End of Run \n\n")
+
+```

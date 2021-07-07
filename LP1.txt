@@ -1,0 +1,5 @@
+Links to solvce LP problems
+https://cran.r-project.org/web/views/Optimization.html
+http://lpsolve.sourceforge.net/5.5/R.htm
+https://cran.r-project.org/web/packages/lpSolve/lpSolve.pdf
+http://www.r-bloggers.com/modeling-and-solving-linear-programming-with-r-free-book/
